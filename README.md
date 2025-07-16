@@ -1,34 +1,27 @@
-# Next.js & HeroUI Template
+# web-line
+<img width="100" alt="image" src="https://images-cdn.openxcell.com/wp-content/uploads/2024/07/24154156/dango-inner-2.webp" />
 
-This is a template for creating applications using Next.js 14 (pages directory) and HeroUI (v2).
+- A website for shops to manage queue and their shop e.g. manager management, report income, manage queue.
+- web-line using nextjs(pages) + heroui & tailwind 4 + Line LIFF
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/next-pages-template)
+## Prerequistes
+Before you begin, ensure you have met the following requirements:
+- read document about [Next JS](https://nextjs.org/docs)
+- UI Component framework use [Hero UI](https://www.heroui.com/docs/guide/introduction)
+- integration with [Line LIFF](https://developers.line.biz/en/docs/liff/overview/)
 
-> Note: Since Next.js 14, the pages router is recommend migrating to the [new App Router](https://nextjs.org/docs/app) to leverage React's latest features
->
-> Read more: [Pages Router](https://nextjs.org/docs/pages)
+## Installation
 
-## Technologies Used
-
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI](https://heroui.com)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
-- [next-themes](https://github.com/pacocoursey/next-themes)
-
-## How to Use
-
-To create a new project based on this template using `create-next-app`, run the following command:
+To install web-line package, run the following command:
 
 ```bash
-npx create-next-app -e https://github.com/heroui-inc/next-pages-template
+git clone https://github.com/The-Fantastic-3/web-line.git
+
+cd web-line
+
 ```
 
 ### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
 ```bash
 npm install
@@ -39,17 +32,3 @@ npm install
 ```bash
 npm run dev
 ```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-pages-template/blob/main/LICENSE).
