@@ -5,9 +5,41 @@ const User = () => {
   const router = useRouter();
   return (
     <UserDefaultLayout>
-      <p>User page</p>
-      <p>{router.query.shop_id}</p>
-      <p>{router.query.liff_id}</p>
+      <div className="flex flex-col mt-5 gap-10 items-center h-full">
+        <section className="text-center space-y-4">
+          <h1 className="text-3xl text-primary-900 font-semibold">
+            ระบบจองคิว
+          </h1>
+          <article className="text-primary-800">
+            <p className="">
+              fantastic3 คือระบบจองคิวและจัดการ ร้านค้าของคุณได้ง่ายๆ ผ่าน Line
+              Official
+            </p>
+            {/* <p>{router.query.shop_id}</p>
+            <p>{router.query.liff_id}</p> */}
+          </article>
+        </section>
+        <section className="bg-white w-full h-fit py-5 px-3 rounded-lg border border-primary-500 shadow-lg shadow-[#D1F2FF] text-center text-primary-800 space-y-5">
+          <h1 className="underline text-2xl text-primary-900 font-semibold">
+            กฎการจองคิว
+          </h1>
+          <ul className="list-disc list-inside space-y-2">
+            <li>เลือกวันและเวลาที่ว่างผ่านระบบจองคิว</li>
+            <li>ใส่รายละเอียดงานสไตล์งานที่ต้องการ</li>
+            <li>รอช่างยืนยันการจองภายใน 24 ชั่วโมง</li>
+            <li>
+              อาจจะมีการมัดจำในบางกรณีทางเราจะ
+              ติดต่อไปทางไลน์ที่ใช้ในการจองคิวช่าง
+            </li>
+            <li>
+              หากติดธุระด่วนหรือต้องการยกเลิก กรุณาทำล่วงหน้าอย่างน้อย 24 ชม.
+            </li>
+          </ul>
+          <p className="">
+            หากต้องการสอบถามเพิ่มเติม ติดต่อเราได้ทาง Line หรือ IG
+          </p>
+        </section>
+      </div>
     </UserDefaultLayout>
   );
 };

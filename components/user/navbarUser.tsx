@@ -36,7 +36,7 @@ const NavbarUser = () => {
       <NavbarMenu className="bg-white">
         <div className="mx-4 mt-2 flex flex-col gap-2 justify-center h-full items-center">
           {siteConfig.navMenuItems.map((item, index) => (
-            <div className="space-y-8 w-full px-12" key={`${item}-${index}`}>
+            <div className="space-y-8 w-3/4" key={`${item}-${index}`}>
               <NavbarMenuItem className="w-full text-center pt-8">
                 <Link
                   href="/"
