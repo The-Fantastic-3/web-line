@@ -10,10 +10,17 @@ import {
 } from "@heroui/navbar";
 import Image from "next/image";
 import NextLink from "next/link";
+import { useState } from "react";
 
 const NavbarUser = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
+    <HeroUINavbar
+      onMenuOpenChange={setIsMenuOpen}
+      maxWidth="xl"
+      position="sticky"
+      className={isMenuOpen ? "" : "box-shadow"}
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <div className="flex justify-start items-center gap-1">
@@ -24,7 +31,7 @@ const NavbarUser = () => {
               height={40}
               className="rounded-full"
             />
-            <p className="font-medium text-inherit">Queuely</p>
+            <p className="text-inherit font-semibold">Queuely</p>
           </div>
         </NavbarBrand>
       </NavbarContent>

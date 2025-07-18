@@ -27,7 +27,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         key={"main children"}
-        className="px-10 h-full bg-linear-to-t from-10% from-[#D7D3FF] via-40% via-white"
+        className="px-10 h-full bg-linear-to-t from-10% from-primary-100 via-40% via-white"
       >
         {children}
       </motion.main>
@@ -41,7 +41,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         <Button
           variant="light"
           className="text-white text-lg"
-          endContent={<CalendarDaysIcon className="text-white size-5" />}
+          startContent={<CalendarDaysIcon className="text-white size-5" />}
         >
           ดูคิวที่จองไว้
         </Button>
