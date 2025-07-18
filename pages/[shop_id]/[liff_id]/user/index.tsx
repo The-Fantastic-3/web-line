@@ -11,13 +11,13 @@ const User = () => {
             ระบบจองคิว
           </h1>
           <article className="">
-            <p className="text-neutral-500">
+            <p className="text-neutral-400">
               fantastic3 คือระบบจองคิวและจัดการ ร้านค้าของคุณได้ง่ายๆ ผ่าน Line
               Official
             </p>
           </article>
         </section>
-        <section className="bg-white w-full h-fit py-5 px-3 rounded-4xl border shadow-lg shadow-[#B8B8B8]/15 text-center text-neutral-600 space-y-5">
+        <section className="bg-white w-full h-fit py-5 px-3 rounded-4xl border shadow-lg shadow-[#B8B8B8]/15 text-center text-neutral-500 space-y-5">
           <h1 className="underline text-2xl text-neutral-800 font-semibold">
             กฎการจองคิว
           </h1>
