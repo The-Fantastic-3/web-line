@@ -65,7 +65,7 @@ const UserBookingLayout = ({
         animate={{ opacity: 1 }}
         transition={{ duration: easeIn(0.8) }}
         key={"footer"}
-        className="bg-linear-to-br from-[#00B4DB] to-[#0083B0] py-6 px-5 text-white flex justify-between items-center text-lg"
+        className="bg-linear-to-br from-[#9162FE] to-[#4B30E4] py-6 px-5 text-white flex justify-between items-center text-lg"
       >
         <Button
           variant="light"

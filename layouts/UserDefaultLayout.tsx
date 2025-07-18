@@ -27,7 +27,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         key={"main children"}
-        className="px-10 h-full bg-linear-to-t from-10% from-[#C4F4FF] via-40% via-white"
+        className="px-10 h-full bg-linear-to-t from-10% from-[#D7D3FF] via-40% via-white"
       >
         {children}
       </motion.main>
@@ -36,7 +36,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         key={"footer"}
-        className="bg-linear-to-br from-[#00B4DB] to-[#0083B0] py-6 px-5 text-white flex justify-between items-center text-lg"
+        className="bg-linear-to-br from-[#9162FE] to-[#4B30E4] py-6 px-5 text-white flex justify-between items-center text-lg"
       >
         <Button
           variant="light"

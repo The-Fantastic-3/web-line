@@ -16,21 +16,21 @@ const NavbarUser = () => {
     <HeroUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <div className="flex justify-start items-center gap-1 text-primary-700">
+          <div className="flex justify-start items-center gap-1">
             <Image
-              src="/Fantastic3-logo.svg"
-              alt="Fantasticthree Logo"
+              src="/Queuely-logo.svg"
+              alt="Queuely Logo"
               width={40}
               height={40}
               className="rounded-full"
             />
-            <p className="font-medium text-inherit">Fantasticthree</p>
+            <p className="font-medium text-inherit">Queuely</p>
           </div>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="basis-1 pl-4" justify="end">
-        <NavbarMenuToggle className="text-primary-700" />
+        <NavbarMenuToggle className="text-primary-900" />
       </NavbarContent>
 
       <NavbarMenu className="bg-white">

@@ -34,14 +34,14 @@ export default function IndexPage() {
               key={"logo"}
             >
               <Image
-                src="/Fantastic3-logo.svg"
+                src="/Queuely-logo.svg"
                 width={200}
                 height={200}
                 alt="Fantastic 3 Logo"
               />
             </motion.div>
             <div className="text-center">
-              <h1 className={title({ size: "sm" })}>Fantastic 3</h1>
+              <h1 className={title({ size: "sm" })}>Queuely</h1>
               <p className="text-light-grey pt-2">
                 ระบบจองคิวร้านค้าผ่าน LINE OA
               </p>

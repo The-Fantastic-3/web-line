@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Fantastic 3",
+  name: "Queuely",
   description: "Queue management system",
   navItems: [
     {

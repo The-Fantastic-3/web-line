@@ -7,11 +7,11 @@ const User = () => {
     <UserDefaultLayout>
       <div className="flex flex-col mt-5 gap-10 items-center h-full">
         <section className="text-center space-y-4">
-          <h1 className="text-3xl text-primary-900 font-semibold">
+          <h1 className="text-3xl text-neutral-800 font-semibold">
             ระบบจองคิว
           </h1>
-          <article className="text-primary-800">
-            <p className="">
+          <article className="">
+            <p className="text-neutral-400">
               fantastic3 คือระบบจองคิวและจัดการ ร้านค้าของคุณได้ง่ายๆ ผ่าน Line
               Official
             </p>
@@ -19,8 +19,8 @@ const User = () => {
             <p>{router.query.liff_id}</p> */}
           </article>
         </section>
-        <section className="bg-white w-full h-fit py-5 px-3 rounded-lg border border-primary-500 shadow-lg shadow-[#D1F2FF] text-center text-primary-800 space-y-5">
-          <h1 className="underline text-2xl text-primary-900 font-semibold">
+        <section className="bg-white w-full h-fit py-5 px-3 rounded-lg border shadow-lg shadow-[#B8B8B8]/15 text-center text-neutral-500 space-y-5">
+          <h1 className="underline text-2xl text-neutral-800 font-semibold">
             กฎการจองคิว
           </h1>
           <ul className="list-disc list-inside space-y-2">
