@@ -27,7 +27,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         key={"main children"}
-        className="px-6 h-full bg-linear-to-t from-10% from-[#C4F4FF] via-40% via-white"
+        className="px-10 h-full bg-linear-to-t from-10% from-[#C4F4FF] via-40% via-white"
       >
         {children}
       </motion.main>

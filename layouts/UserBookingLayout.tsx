@@ -37,7 +37,6 @@ const UserBookingLayout = ({
         transition={{ duration: easeIn(0.8) }}
         key={"navbar"}
       >
-        {/* <NavbarUser /> */}
         <nav className="w-full py-8 flex gap-2 px-6">
           {stepCount &&
             Array.from({ length: stepCount }, (_, i) => (
@@ -57,7 +56,7 @@ const UserBookingLayout = ({
         animate={{ opacity: 1 }}
         transition={{ duration: easeIn(0.8) }}
         key={"main children"}
-        className="px-6 h-full"
+        className="px-10 h-full"
       >
         {children}
       </motion.main>
