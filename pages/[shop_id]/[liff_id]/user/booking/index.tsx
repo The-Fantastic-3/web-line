@@ -92,7 +92,10 @@ const Booking = () => {
       setDisabledBtn(true);
     } else if (currentStep === 4 && !selectedAge) {
       setDisabledBtn(true);
-    } else if (currentStep === 5 && (!form.contactName || !form.contactPhone)) {
+    } else if (
+      currentStep === 5 &&
+      (!form.contactName || !form.contactPhone || form.contactPhone.length < 12)
+    ) {
       setDisabledBtn(true);
     } else if (currentStep === 6 && !agreed) {
       setDisabledBtn(true);
