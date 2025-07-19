@@ -3,20 +3,6 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "Queuely",
   description: "Queue management system",
-  navItems: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
-  ],
   navMenuItems: [
     {
       label: "Instagram",

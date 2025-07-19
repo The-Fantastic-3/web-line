@@ -34,7 +34,7 @@ export default function IndexPage() {
               key={"logo"}
             >
               <Image
-                src="/Queuely-logo.svg"
+                src="/queuely-logo.svg"
                 width={200}
                 height={200}
                 alt="Fantastic 3 Logo"

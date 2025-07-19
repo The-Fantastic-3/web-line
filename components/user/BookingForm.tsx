@@ -29,9 +29,21 @@ const BookingForm = ({ form, onFormChange }: SelectProps) => {
         labelPlacement="outside"
         size="lg"
         name="contactPhone"
-        type="number"
+        type="tel"
         value={form?.contactPhone}
         onChange={onFormChange}
+        pattern="^\d{3}-\d{3}-\d{4}$"
+        onInput={(e) => {
+          const input = e.target as HTMLInputElement;
+          let digits = input.value.replace(/\D/g, "").slice(0, 10);
+          let formatted = digits;
+          if (digits.length > 6) {
+            formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+          } else if (digits.length > 3) {
+            formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+          }
+          input.value = formatted;
+        }}
       />
       <Input
         label="ช่องทางการติดต่อเพิ่มเติม"

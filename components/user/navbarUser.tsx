@@ -25,7 +25,7 @@ const NavbarUser = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <div className="flex justify-start items-center gap-1">
             <Image
-              src="/Queuely-logo.svg"
+              src="/queuely-logo.svg"
               alt="Queuely Logo"
               width={40}
               height={40}
