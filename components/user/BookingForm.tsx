@@ -18,7 +18,7 @@ const BookingForm = ({ form, onFormChange }: SelectProps) => {
         size="lg"
         name="contactName"
         type="text"
-        value={form?.contactName}
+        value={form?.contactName.trim()}
         onChange={onFormChange}
       />
       <Input

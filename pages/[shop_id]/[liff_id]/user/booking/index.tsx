@@ -80,8 +80,8 @@ const Booking = () => {
       date: moment(new Date()).format("DD MMMM YYYY"),
       time: selectedTime,
       lineName: "ทะนะกอนนน",
-      contactName: form.contactName,
-      contactPhone: form.contactPhone,
+      contactName: form.contactName.trim(),
+      contactPhone: form.contactPhone.trim(),
     });
   }, [selectedTime, form, selectedGender, selectedAge]);
 
