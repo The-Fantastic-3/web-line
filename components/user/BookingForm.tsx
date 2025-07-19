@@ -46,16 +46,6 @@ const BookingForm = ({ form, onFormChange }: SelectProps) => {
         }}
       />
       <Input
-        label="ช่องทางการติดต่อเพิ่มเติม"
-        placeholder="โปรดระบุช่องทางการติดต่อเพิ่มเติม"
-        labelPlacement="outside"
-        size="lg"
-        name="additionalContact"
-        type="text"
-        value={form?.additionalContact}
-        onChange={onFormChange}
-      />
-      <Input
         label="หมายเหตุถึงช่าง"
         placeholder="โปรดระบุหมายเหตุถึงช่าง"
         labelPlacement="outside"

@@ -1,3 +1,4 @@
+import * as motion from "motion/react-client";
 import { TimeSlot } from "@/types/user/timeSlot";
 
 type SelectProps = {
@@ -8,9 +9,21 @@ type SelectProps = {
 
 const TimeSelect = ({ timeSlots, onTimeSelect, selectedTime }: SelectProps) => {
   return (
-    <div className="flex flex-col items-center w-full gap-5">
-      {timeSlots.map((slot) => (
-        <div key={slot.time} className="w-full">
+    <div
+      className={
+        timeSlots.length <= 5
+          ? "flex flex-col items-center w-full gap-5"
+          : "grid grid-cols-2 gap-4 items-center w-full"
+      }
+    >
+      {timeSlots.map((slot, index) => (
+        <motion.div
+          initial={{ y: 60, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: index * 0.1 + 0.3 }}
+          key={slot.time}
+          className="w-full"
+        >
           <input
             type="radio"
             id={`time-${slot.time}`}
@@ -27,7 +40,7 @@ const TimeSelect = ({ timeSlots, onTimeSelect, selectedTime }: SelectProps) => {
           >
             {slot.time}
           </label>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

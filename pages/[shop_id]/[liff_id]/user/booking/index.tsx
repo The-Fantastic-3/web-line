@@ -8,6 +8,7 @@ import GenderSelect from "@/components/user/GenderSelect";
 import AgeSelect from "@/components/user/AgeSelect";
 import BookingForm from "@/components/user/BookingForm";
 import ConfirmSelect from "@/components/user/ConfirmSelect";
+import moment from "moment";
 
 const Booking = () => {
   const stepCount = 6;
@@ -18,7 +19,6 @@ const Booking = () => {
   const [form, setForm] = useState({
     contactName: "",
     contactPhone: "",
-    additionalContact: "",
     notesToArtist: "",
   });
   const [agreed, setAgreed] = useState<boolean>(false);
@@ -37,6 +37,9 @@ const Booking = () => {
     { id: "3", time: "11:00", isAvailable: true },
     { id: "4", time: "12:00", isAvailable: false },
     { id: "5", time: "13:00", isAvailable: true },
+    { id: "6", time: "14:00", isAvailable: true },
+    { id: "7", time: "15:00", isAvailable: true },
+    { id: "8", time: "16:00", isAvailable: true },
   ];
 
   const handleTimeSelect = (time: string) => {
@@ -74,7 +77,7 @@ const Booking = () => {
 
   useEffect(() => {
     setPayload({
-      date: "2023-10-01",
+      date: moment(new Date()).format("DD MMMM YYYY"),
       time: selectedTime,
       lineName: "ทะนะกอนนน",
       contactName: form.contactName,
@@ -106,6 +109,7 @@ const Booking = () => {
         onPressBack={handlePreviousStep}
         onPressNext={handleNextStep}
         isDisabled={disabledBtn}
+        payload={payload}
       >
         <AnimatePresence>
           {currentStep === 1 && (

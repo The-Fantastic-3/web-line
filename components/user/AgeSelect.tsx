@@ -1,3 +1,5 @@
+import * as motion from "motion/react-client";
+
 type SelectProps = {
   onAgeSelect: (age: string) => void;
   selectedAge?: string | null;
@@ -14,8 +16,14 @@ const mockedAgeRanges = [
 const AgeSelect = ({ onAgeSelect, selectedAge }: SelectProps) => {
   return (
     <div className="flex flex-col items-center w-full gap-5">
-      {mockedAgeRanges.map((slot) => (
-        <div key={slot.id} className="w-full">
+      {mockedAgeRanges.map((slot, index) => (
+        <motion.div
+          initial={{ y: 60, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: index * 0.1 + 0.3 }}
+          key={slot.id}
+          className="w-full"
+        >
           <input
             type="radio"
             id={`age-${slot.id}`}
@@ -32,7 +40,7 @@ const AgeSelect = ({ onAgeSelect, selectedAge }: SelectProps) => {
           >
             <p className="my-auto">{slot.age}</p>
           </label>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

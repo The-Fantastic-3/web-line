@@ -20,6 +20,13 @@ type UserBookingLayoutProps = {
   onPressBack?: () => void;
   onPressNext?: () => void;
   isDisabled?: boolean;
+  payload?: {
+    date: string;
+    time: string;
+    lineName: string;
+    contactName: string;
+    contactPhone: string;
+  };
 };
 
 const UserBookingLayout = ({
@@ -29,6 +36,7 @@ const UserBookingLayout = ({
   onPressBack,
   onPressNext,
   isDisabled = false,
+  payload,
 }: UserBookingLayoutProps) => {
   const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -116,7 +124,12 @@ const UserBookingLayout = ({
         )}
       </motion.footer>
 
-      <ModalConfirm isOpen={isOpen} onOpenChange={onOpenChange} />
+      <ModalConfirm
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        bookingDate={payload?.date}
+        bookingTime={payload?.time}
+      />
     </div>
   );
 };
