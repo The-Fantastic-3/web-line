@@ -29,6 +29,7 @@ const Booking = () => {
     contactName: string;
     contactPhone: string;
   }>();
+  const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 
   const mockedTimeSlots = [
     { id: "1", time: "09:00", isAvailable: true },
@@ -81,6 +82,22 @@ const Booking = () => {
     });
   }, [selectedTime, form, selectedGender, selectedAge]);
 
+  useEffect(() => {
+    if (currentStep === 2 && !selectedTime) {
+      setDisabledBtn(true);
+    } else if (currentStep === 3 && !selectedGender) {
+      setDisabledBtn(true);
+    } else if (currentStep === 4 && !selectedAge) {
+      setDisabledBtn(true);
+    } else if (currentStep === 5 && (!form.contactName || !form.contactPhone)) {
+      setDisabledBtn(true);
+    } else if (currentStep === 6 && !agreed) {
+      setDisabledBtn(true);
+    } else {
+      setDisabledBtn(false);
+    }
+  }, [currentStep, selectedTime, selectedGender, selectedAge, form, agreed]);
+
   return (
     <>
       <UserBookingLayout
@@ -88,6 +105,7 @@ const Booking = () => {
         stepCount={stepCount}
         onPressBack={handlePreviousStep}
         onPressNext={handleNextStep}
+        isDisabled={disabledBtn}
       >
         <AnimatePresence>
           {currentStep === 1 && (
@@ -99,7 +117,7 @@ const Booking = () => {
               className="w-full flex flex-col items-center h-full gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-neutral-900">
+                <h1 className="text-3xl font-semibold text-deeper-grey">
                   เลือกวันที่ต้องการ
                 </h1>
                 <p className="text-neutral-500">
@@ -113,13 +131,13 @@ const Booking = () => {
           {currentStep === 2 && (
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
               className="w-full flex flex-col items-center h-full gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-neutral-900">
+                <h1 className="text-3xl font-semibold text-deeper-grey">
                   เลือกเวลาที่ต้องการ
                 </h1>
                 <p className="text-neutral-500">
@@ -145,7 +163,7 @@ const Booking = () => {
               className="w-full flex flex-col items-center h-full gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-neutral-900">
+                <h1 className="text-3xl font-semibold text-deeper-grey">
                   คุณคือเพศอะไร
                 </h1>
                 <p className="text-neutral-500">
@@ -169,7 +187,7 @@ const Booking = () => {
               className="w-full flex flex-col items-center h-full gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-neutral-900">
+                <h1 className="text-3xl font-semibold text-deeper-grey">
                   คุณอายุเท่าไหร่
                 </h1>
                 <p className="text-neutral-500">
@@ -193,7 +211,7 @@ const Booking = () => {
               className="w-full flex flex-col items-center h-full gap-10"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-neutral-900">
+                <h1 className="text-3xl font-semibold text-deeper-grey">
                   ระบุข้อมูลเพิ่มเติม
                 </h1>
                 <p className="text-neutral-500">
@@ -214,7 +232,7 @@ const Booking = () => {
               className="w-full flex flex-col items-center h-full gap-8"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-neutral-900">
+                <h1 className="text-3xl font-semibold text-deeper-grey">
                   ตรวจสอบข้อมูล
                 </h1>
                 <p className="text-neutral-500">
@@ -229,7 +247,6 @@ const Booking = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        {/* <CalendarUser /> */}
       </UserBookingLayout>
     </>
   );

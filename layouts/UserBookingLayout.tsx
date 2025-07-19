@@ -9,6 +9,8 @@ import {
 import { useRouter } from "next/router";
 import { easeIn } from "framer-motion";
 import React from "react";
+import { useDisclosure } from "@heroui/modal";
+import ModalConfirm from "@/components/user/ModalConfirm";
 
 // Define props type for children
 type UserBookingLayoutProps = {
@@ -17,6 +19,7 @@ type UserBookingLayoutProps = {
   currentStep?: number | 1;
   onPressBack?: () => void;
   onPressNext?: () => void;
+  isDisabled?: boolean;
 };
 
 const UserBookingLayout = ({
@@ -25,8 +28,10 @@ const UserBookingLayout = ({
   currentStep,
   onPressBack,
   onPressNext,
+  isDisabled = false,
 }: UserBookingLayoutProps) => {
   const router = useRouter();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div className="relative flex flex-col h-screen">
@@ -84,17 +89,34 @@ const UserBookingLayout = ({
           ย้อนกลับ
         </Button>
 
-        <Button
-          variant="solid"
-          className="bg-white text-primary-700 text-lg"
-          onPress={() => onPressNext?.()}
-          endContent={
-            <ChevronDoubleRightIcon className="text-primary-700 size-5" />
-          }
-        >
-          ขั้นถัดไป
-        </Button>
+        {currentStep === 6 ? (
+          <Button
+            variant="solid"
+            className="bg-white text-primary-700 text-lg disabled:opacity-70"
+            onPress={onOpen}
+            isDisabled={isDisabled}
+            endContent={
+              <ChevronDoubleRightIcon className="text-primary-700 size-5 animate-pulse" />
+            }
+          >
+            ยืนยันคิว
+          </Button>
+        ) : (
+          <Button
+            variant="solid"
+            className="bg-white text-primary-700 text-lg disabled:opacity-70"
+            onPress={() => onPressNext?.()}
+            isDisabled={isDisabled}
+            endContent={
+              <ChevronDoubleRightIcon className="text-primary-700 size-5 animate-pulse" />
+            }
+          >
+            ขั้นถัดไป
+          </Button>
+        )}
       </motion.footer>
+
+      <ModalConfirm isOpen={isOpen} onOpenChange={onOpenChange} />
     </div>
   );
 };

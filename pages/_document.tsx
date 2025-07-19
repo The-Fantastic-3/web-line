@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import clsx from "clsx";
 
-import { fontPoppins } from "@/config/fonts";
+import { fontPoppins, fontIBM } from "@/config/fonts";
 
 export default function Document() {
   return (

@@ -18,7 +18,7 @@ const ConfirmSelect = ({ onAgreed, agreed, payload }: SelectProps) => {
     <>
       <div className="border border-lighter-grey rounded-3xl p-6 w-full bg-white box-shadow flex flex-col items-center gap-4">
         <header>
-          <h3 className="text-center font-medium">สรุปข้อมูลการจอง</h3>
+          <h3 className="text-center font-semibold">สรุปข้อมูลการจอง</h3>
           <p className="text-light-grey text-center text-xs">
             เพื่อป้องกันความผิดพลาด กรุณาตรวจสอบข้อมูล
           </p>
@@ -30,7 +30,7 @@ const ConfirmSelect = ({ onAgreed, agreed, payload }: SelectProps) => {
             size="lg"
             src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
           />
-          <p>{payload?.lineName || "-"}</p>
+          <p className="font-semibold">{payload?.lineName || "-"}</p>
         </div>
         <div className="w-full flex justify-between">
           <div className="flex flex-col">

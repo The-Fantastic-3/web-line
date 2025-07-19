@@ -1,8 +1,18 @@
-import { Poppins as FontPoppins } from "next/font/google";
+import {
+  Poppins as FontPoppins,
+  IBM_Plex_Sans_Thai as FontIBM,
+} from "next/font/google";
 
 export const fontPoppins = FontPoppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+export const fontIBM = FontIBM({
+  subsets: ["latin", "thai"],
+  variable: "--font-ibm",
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
 });

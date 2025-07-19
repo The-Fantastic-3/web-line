@@ -4,7 +4,7 @@ import { HeroUIProvider } from "@heroui/system";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useRouter } from "next/router";
 
-import { fontPoppins } from "@/config/fonts";
+import { fontPoppins, fontIBM } from "@/config/fonts";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -21,4 +21,5 @@ export default function App({ Component, pageProps }: AppProps) {
 
 export const fonts = {
   poppins: fontPoppins,
+  ibm: fontIBM,
 };

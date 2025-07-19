@@ -12,6 +12,7 @@ const config = {
     extend: {
       fontFamily: {
         poppins: ["var(--font-poppins)"],
+        ibm: ["var(--font-ibm)"],
       },
       colors: {
         "primary-50": "#FFFFFF",
