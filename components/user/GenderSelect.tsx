@@ -20,12 +20,12 @@ const mockedGender = [
   },
   {
     id: "3",
-    gender: "ไม่ระบุเพศ",
+    gender: "Non-Binary",
     icon: () => <NonBinaryIcon size={18} className="my-auto" />,
   },
   {
     id: "4",
-    gender: "อื่นๆ",
+    gender: "ไม่ต้องการระบุ",
     icon: () => <XMarkIcon className="size-5 my-auto" />,
   },
 ];
