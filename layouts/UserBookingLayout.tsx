@@ -129,6 +129,9 @@ const UserBookingLayout = ({
         onOpenChange={onOpenChange}
         bookingDate={payload?.date}
         bookingTime={payload?.time}
+        onConfirm={() => {
+          router.push(`/${router.query.shop_id}/${router.query.liff_id}/user`);
+        }}
       />
     </div>
   );

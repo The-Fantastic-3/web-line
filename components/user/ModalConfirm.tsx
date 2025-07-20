@@ -14,6 +14,7 @@ type ModalProps = {
   onOpenChange: (isOpen: boolean) => void;
   bookingDate?: string;
   bookingTime?: string;
+  onConfirm?: () => void;
 };
 
 const ModalConfirm = ({
@@ -21,6 +22,7 @@ const ModalConfirm = ({
   onOpenChange,
   bookingDate,
   bookingTime,
+  onConfirm,
 }: ModalProps) => {
   return (
     <>
@@ -76,7 +78,10 @@ const ModalConfirm = ({
                   เช็คอีกครั้ง
                 </Button>
                 <Button
-                  onPress={onClose}
+                  onPress={() => {
+                    onConfirm?.();
+                    onClose();
+                  }}
                   className="bg-primary-700 text-white box-shadow w-1/2 "
                 >
                   ยืนยัน
