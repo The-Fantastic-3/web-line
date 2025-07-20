@@ -13,6 +13,7 @@ const config = {
       fontFamily: {
         poppins: ["var(--font-poppins)"],
         ibm: ["var(--font-ibm)"],
+        kanit: ["var(--font-kanit)"],
       },
       colors: {
         "primary-50": "#FFFFFF",

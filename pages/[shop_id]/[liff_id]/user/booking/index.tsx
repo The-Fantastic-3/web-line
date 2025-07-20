@@ -13,6 +13,7 @@ import moment from "moment";
 const Booking = () => {
   const stepCount = 6;
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const [selectedDate, setSelectedDate] = useState<moment.Moment | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [selectedGender, setSelectedGender] = useState<string>("");
   const [selectedAge, setSelectedAge] = useState<string>("");
@@ -41,6 +42,10 @@ const Booking = () => {
     { id: "7", time: "15:00", isAvailable: true },
     { id: "8", time: "16:00", isAvailable: true },
   ];
+
+  const handleDateSelect = (date: moment.Moment) => {
+    setSelectedDate(date);
+  };
 
   const handleTimeSelect = (time: string) => {
     setSelectedTime(time);
@@ -77,16 +82,18 @@ const Booking = () => {
 
   useEffect(() => {
     setPayload({
-      date: moment(new Date()).format("DD MMMM YYYY"),
+      date: selectedDate ? selectedDate.format("DD MMMM YYYY") : "",
       time: selectedTime,
       lineName: "ทะนะกอนนน",
       contactName: form.contactName.trim(),
       contactPhone: form.contactPhone.trim(),
     });
-  }, [selectedTime, form, selectedGender, selectedAge]);
+  }, [selectedDate, selectedTime, form, selectedGender, selectedAge]);
 
   useEffect(() => {
-    if (currentStep === 2 && !selectedTime) {
+    if (currentStep === 1 && !selectedDate) {
+      setDisabledBtn(true);
+    } else if (currentStep === 2 && !selectedTime) {
       setDisabledBtn(true);
     } else if (currentStep === 3 && !selectedGender) {
       setDisabledBtn(true);
@@ -102,7 +109,15 @@ const Booking = () => {
     } else {
       setDisabledBtn(false);
     }
-  }, [currentStep, selectedTime, selectedGender, selectedAge, form, agreed]);
+  }, [
+    selectedDate,
+    currentStep,
+    selectedTime,
+    selectedGender,
+    selectedAge,
+    form,
+    agreed,
+  ]);
 
   return (
     <>
@@ -121,7 +136,7 @@ const Booking = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-16"
+              className="w-full flex flex-col items-center h-full gap-8"
             >
               <header className="space-y-3 text-center">
                 <h1 className="text-3xl font-semibold text-deeper-grey">
@@ -131,6 +146,10 @@ const Booking = () => {
                   กรุณาเลือกวันที่ที่ต้องการจอง
                 </p>
               </header>
+              <CalendarUser
+                onSelectDate={handleDateSelect}
+                dateSelection={selectedDate}
+              />
             </motion.div>
           )}
         </AnimatePresence>

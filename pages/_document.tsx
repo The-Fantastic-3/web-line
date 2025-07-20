@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import clsx from "clsx";
 
-import { fontPoppins, fontIBM } from "@/config/fonts";
+import { fontPoppins, fontIBM, fontKanit } from "@/config/fonts";
 
 export default function Document() {
   return (
@@ -9,8 +9,8 @@ export default function Document() {
       <Head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-poppins antialiased",
-          fontPoppins.variable
+          "min-h-screen bg-background font-kanit antialiased",
+          fontKanit.variable
         )}
       >
         <Main />

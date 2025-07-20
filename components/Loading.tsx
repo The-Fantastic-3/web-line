@@ -25,9 +25,7 @@ const Loading = ({ isLoading }: LoadingProps) => {
               height={180}
             />
             <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-semibold">
-                Queue<span className="text-primary-700">ly</span>
-              </h1>
+              <h1 className="text-3xl font-semibold">Queuely</h1>
               <p className="text-neutral-400">ระบบจองคิวร้านค้าผ่าน LINE OA</p>
             </div>
           </div>
