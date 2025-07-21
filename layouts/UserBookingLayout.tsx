@@ -23,7 +23,6 @@ type UserBookingLayoutProps = {
   payload?: {
     date: string;
     time: string;
-    lineName: string;
     contactName: string;
     contactPhone: string;
   };

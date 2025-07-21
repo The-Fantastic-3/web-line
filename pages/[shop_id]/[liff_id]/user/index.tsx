@@ -1,15 +1,43 @@
 import Loading from "@/components/Loading";
 import UserDefaultLayout from "@/layouts/UserDefaultLayout";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import liff from "@line/liff";
+
+type Profile = {
+  displayName?: string;
+  userId?: string;
+  pictureUrl?: string;
+  statusMessage?: string;
+};
 
 const User = () => {
   const router = useRouter();
+  const liff_id = router.query.liff_id;
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
     setTimeout(() => setLoading(false), 500);
   }, 2000);
+
+  useEffect(() => {
+    if (!router.isReady || typeof liff_id !== "string") return;
+    const initLiff = async () => {
+      try {
+        await liff.init({ liffId: liff_id });
+        if (!liff.isLoggedIn()) {
+          liff.login();
+        } else {
+          const profile = await liff.getProfile();
+          localStorage.setItem("lineProfile", JSON.stringify(profile));
+        }
+      } catch (err) {
+        console.error("LIFF init error:", err);
+        console.error("Please check your LIFF ID and ensure it is correct.");
+      }
+    };
+    initLiff();
+  }, [router.isReady, liff_id]);
 
   return (
     <>

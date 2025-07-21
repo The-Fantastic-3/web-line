@@ -66,7 +66,7 @@ const ModalConfirm = ({
                     <div className="w-16 h-16 rounded-2xl border border-primary-700 flex justify-center items-center shadow-md">
                       <MapPinIcon className="size-8 text-primary-700 stroke-2" />
                     </div>
-                    <p className="my-auto truncate">111tattoo.house</p>
+                    <p className="my-auto truncate">{"Queuely shop TEST"}</p>
                   </div>
                 </div>
               </ModalBody>

@@ -26,7 +26,6 @@ const Booking = () => {
   const [payload, setPayload] = useState<{
     date: string;
     time: string;
-    lineName: string;
     contactName: string;
     contactPhone: string;
   }>();
@@ -84,7 +83,6 @@ const Booking = () => {
     setPayload({
       date: selectedDate ? selectedDate.format("DD MMMM YYYY") : "",
       time: selectedTime,
-      lineName: "ทะนะกอนนน",
       contactName: form.contactName.trim(),
       contactPhone: form.contactPhone.trim(),
     });

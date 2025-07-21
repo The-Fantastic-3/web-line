@@ -7,13 +7,14 @@ type SelectProps = {
   payload?: {
     date: string;
     time: string;
-    lineName?: string;
     contactName: string;
     contactPhone: string;
   };
 };
 
 const ConfirmSelect = ({ onAgreed, agreed, payload }: SelectProps) => {
+  const getProfile = localStorage.getItem("lineProfile");
+  const lineProfile = getProfile ? JSON.parse(getProfile) : {};
   return (
     <>
       <div className="border border-lighter-grey rounded-3xl p-6 w-full bg-white box-shadow flex flex-col items-center gap-4">
@@ -28,9 +29,10 @@ const ConfirmSelect = ({ onAgreed, agreed, payload }: SelectProps) => {
             isBordered
             color="secondary"
             size="lg"
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            src={lineProfile.pictureUrl || ""}
+            alt={lineProfile.displayName || "User Avatar"}
           />
-          <p className="font-semibold">{payload?.lineName || "-"}</p>
+          <p className="font-semibold">{lineProfile.displayName || "-"}</p>
         </div>
         <div className="w-full flex justify-between">
           <div className="flex flex-col">
