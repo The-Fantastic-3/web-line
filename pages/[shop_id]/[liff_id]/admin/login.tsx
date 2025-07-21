@@ -35,7 +35,7 @@ const Login = () => {
         <Loading isLoading={loading} />
         <section className="flex flex-col items-center mt-10">
           <Image
-            src="/queuely-logo.svg"
+            src="/Queuely-logo.svg"
             alt="Queuely Logo"
             width={150}
             height={150}

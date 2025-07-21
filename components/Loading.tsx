@@ -19,7 +19,7 @@ const Loading = ({ isLoading }: LoadingProps) => {
         >
           <div className="-translate-y-16 flex flex-col items-center">
             <Image
-              src="/queuely-logo.svg"
+              src="/Queuely-logo.svg"
               alt="Queuely Logo"
               width={180}
               height={180}
