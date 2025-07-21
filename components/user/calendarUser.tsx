@@ -128,52 +128,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
         <div className="grid grid-cols-7 text-center pt-2">
           {/* before current month */}
           {Array.from({ length: numberOfDayBefore }, (_, i) => (
-            <div
-              key={i}
-              className={`w-full focus:bg-zinc-300 h-12 flex flex-col items-center justify-center
-                ${
-                  moment().isSameOrBefore(
-                    moment(currentDate).date(i + 1),
-                    "day"
-                  )
-                    ? ""
-                    : "text-neutral-400"
-                }
-                ${
-                  selectedDate?.date() ===
-                    monthLastDate - numberOfDayBefore + i + 1 &&
-                  selectedDate?.month() === currentDate.month() - 1
-                    ? "bg-blue-100 rounded-2xl"
-                    : ""
-                }
-                `}
-              onClick={() => {
-                if (
-                  moment().isSameOrBefore(
-                    moment(currentDate).date(i + 1),
-                    "day"
-                  )
-                ) {
-                  setSelectedDate(
-                    moment(currentDate)
-                      .subtract(1, "month")
-                      .date(monthLastDate - numberOfDayBefore + i + 1)
-                  );
-                }
-              }}
-            >
-              <div
-                className={`${
-                  moment().isSameOrBefore(
-                    moment(currentDate).date(i + 1),
-                    "day"
-                  )
-                    ? "w-1.5 h-1.5 rounded-full bg-[#44D3FF]"
-                    : ""
-                }`}
-              ></div>
-              {monthLastDate - numberOfDayBefore + i + 1}
-            </div>
+            <div key={i}></div>
           ))}
           {/* current month */}
           {Array.from({ length: daysInMonth }, (_, i) => (
@@ -188,7 +143,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
                     ? ""
                     : "text-neutral-400"
                 }
-                ${selectedDate?.date() === i + 1 && selectedDate?.month() === currentDate.month() ? "bg-blue-100 rounded-2xl" : ""}
+                ${selectedDate?.date() === i + 1 && selectedDate?.month() === currentDate.month() ? "bg-primary-100 rounded-2xl" : ""}
                 ${moment().date() === i + 1 && moment().month() === currentDate.month() ? "text-primary-700" : ""}
                 `}
               onClick={() => {
@@ -222,59 +177,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
                 (numberOfDayBefore + lastdate) >
               i
             ) {
-              return (
-                <div
-                  key={i}
-                  className={`w-full focus:bg-zinc-300 h-12 flex flex-col items-center justify-center
-                    ${
-                      moment().isSameOrBefore(
-                        moment(currentDate)
-                          .date(i + 1)
-                          .month(currentDate.month() + 1),
-                        "day"
-                      )
-                        ? ""
-                        : "text-neutral-400"
-                    }
-                    ${
-                      selectedDate?.date() === i + 1 &&
-                      selectedDate?.month() === currentDate.month() + 1
-                        ? "bg-blue-100 rounded-2xl"
-                        : ""
-                    }
-                `}
-                  onClick={() => {
-                    if (
-                      moment().isSameOrBefore(
-                        moment(currentDate)
-                          .date(i + 1)
-                          .month(currentDate.month() + 1),
-                        "day"
-                      )
-                    ) {
-                      setSelectedDate(
-                        moment(currentDate)
-                          .add(1, "month")
-                          .date(i + 1)
-                      );
-                    }
-                  }}
-                >
-                  <div
-                    className={`${
-                      moment().isSameOrBefore(
-                        moment(currentDate)
-                          .date(i + 1)
-                          .month(currentDate.month() + 1),
-                        "day"
-                      )
-                        ? "w-1.5 h-1.5 rounded-full bg-[#44D3FF]"
-                        : ""
-                    }`}
-                  ></div>
-                  {i + 1}
-                </div>
-              );
+              return <div key={i}></div>;
             }
           })}
         </div>
