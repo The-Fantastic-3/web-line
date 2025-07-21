@@ -26,8 +26,6 @@ const Login = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     loginForm.phone = loginForm.phone.replace(/\D/g, "");
-    console.log("Login form submitted:", loginForm);
-
     setLoginForm({ phone: "", password: "" });
   };
 

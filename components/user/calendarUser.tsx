@@ -74,9 +74,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
   }, []);
 
   useEffect(() => {
-    console.log("Selected Date:", selectedDate?.format("DD MMMM YYYY"));
     if (selectedDate) {
-      console.log("select: ", selectedDate.format("DD MMMM YYYY"));
       onSelectDate(selectedDate);
     }
   }, [selectedDate]);
