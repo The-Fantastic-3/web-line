@@ -10,7 +10,7 @@ type SelectProps = {
 
 const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
   const [selectedDate, setSelectedDate] = useState<moment.Moment | null>(
-    moment() || dateSelection
+    dateSelection || null
   );
   const [currentDate, setCurrentDate] = useState(moment());
   const [month, setMonth] = useState(moment().format("MMMM"));
@@ -28,7 +28,6 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
 
   const getMonthYear = () => {
     const date = new Date();
-    setCurrentDate(moment());
     setMonth(mapMonth(currentDate.month()));
     setYear(currentDate.year().toString());
     setDaysInMonth(
