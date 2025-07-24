@@ -134,10 +134,10 @@ const Booking = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-8"
+              className="flex h-full w-full flex-col items-center gap-8"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-deeper-grey">
+                <h1 className="text-deeper-grey text-3xl font-semibold">
                   เลือกวันที่ต้องการ
                 </h1>
                 <p className="text-neutral-500">
@@ -158,10 +158,10 @@ const Booking = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-16"
+              className="flex h-full w-full flex-col items-center gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-deeper-grey">
+                <h1 className="text-deeper-grey text-3xl font-semibold">
                   เลือกเวลาที่ต้องการ
                 </h1>
                 <p className="text-neutral-500">
@@ -184,10 +184,10 @@ const Booking = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-16"
+              className="flex h-full w-full flex-col items-center gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-deeper-grey">
+                <h1 className="text-deeper-grey text-3xl font-semibold">
                   คุณคือเพศอะไร
                 </h1>
                 <p className="text-neutral-500">
@@ -208,10 +208,10 @@ const Booking = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-16"
+              className="flex h-full w-full flex-col items-center gap-16"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-deeper-grey">
+                <h1 className="text-deeper-grey text-3xl font-semibold">
                   คุณอายุเท่าไหร่
                 </h1>
                 <p className="text-neutral-500">
@@ -232,10 +232,10 @@ const Booking = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-10"
+              className="flex h-full w-full flex-col items-center gap-10"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-deeper-grey">
+                <h1 className="text-deeper-grey text-3xl font-semibold">
                   ระบุข้อมูลเพิ่มเติม
                 </h1>
                 <p className="text-neutral-500">
@@ -253,10 +253,10 @@ const Booking = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="w-full flex flex-col items-center h-full gap-8"
+              className="flex h-full w-full flex-col items-center gap-8"
             >
               <header className="space-y-3 text-center">
-                <h1 className="text-3xl font-semibold text-deeper-grey">
+                <h1 className="text-deeper-grey text-3xl font-semibold">
                   ตรวจสอบข้อมูล
                 </h1>
                 <p className="text-neutral-500">

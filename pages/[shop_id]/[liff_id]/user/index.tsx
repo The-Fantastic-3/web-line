@@ -43,9 +43,9 @@ const User = () => {
     <>
       <Loading isLoading={loading} />
       <UserDefaultLayout>
-        <div className="flex flex-col justify-center gap-10 items-center h-full">
-          <section className="text-center space-y-4">
-            <h1 className="text-3xl text-neutral-800 font-semibold">
+        <div className="flex h-full flex-col items-center justify-center gap-10">
+          <section className="space-y-4 text-center">
+            <h1 className="text-3xl font-semibold text-neutral-800">
               ระบบจองคิว
             </h1>
             <article className="">
@@ -55,11 +55,11 @@ const User = () => {
               </p>
             </article>
           </section>
-          <section className="bg-white w-full h-fit py-5 px-3 rounded-4xl border shadow-lg shadow-[#B8B8B8]/15 text-center text-neutral-500 space-y-5">
-            <h1 className="underline text-2xl text-neutral-800 font-semibold">
+          <section className="h-fit w-full space-y-5 rounded-4xl border bg-white px-3 py-5 text-center text-neutral-500 shadow-lg shadow-[#B8B8B8]/15">
+            <h1 className="text-2xl font-semibold text-neutral-800 underline">
               กฎการจองคิว
             </h1>
-            <ul className="list-disc list-inside space-y-2">
+            <ul className="list-inside list-disc space-y-2">
               <li>เลือกวันและเวลาที่ว่างผ่านระบบจองคิว</li>
               <li>ใส่รายละเอียดงานสไตล์งานที่ต้องการ</li>
               <li>รอช่างยืนยันการจองภายใน 24 ชั่วโมง</li>

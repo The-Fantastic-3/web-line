@@ -23,7 +23,7 @@ export default function IndexPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col justify-center items-center h-full -translate-y-20"
+            className="flex h-full -translate-y-20 flex-col items-center justify-center"
             key={"container"}
           >
             <motion.div

@@ -22,7 +22,7 @@ const Login = () => {
       url: `/`,
       method: "GET",
     },
-    { manual: true }
+    { manual: true },
   );
 
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,17 +43,11 @@ const Login = () => {
     setTimeout(() => setLoading(false), 500);
   }, 2000);
 
-  useEffect(() => {
-    if (error) {
-      console.error("Error fetching data:", error);
-    }
-  }, [error]);
-
   return (
     <DefaultLayout>
-      <div className="flex flex-col gap-8 items-center w-full h-screen px-5">
+      <div className="flex h-screen w-full flex-col items-center gap-8 px-5">
         <Loading isLoading={loading} />
-        <section className="flex flex-col items-center mt-10">
+        <section className="mt-10 flex flex-col items-center">
           <Image
             src="/Queuely-logo.svg"
             alt="Queuely Logo"
@@ -61,16 +55,14 @@ const Login = () => {
             height={150}
           />
           <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-semibold">
-              Queue<span className="text-primary-700">ly</span>
-            </h1>
-            <p className="text-neutral-400 text-sm">
+            <h1 className="text-2xl font-semibold">Queuely</h1>
+            <p className="text-sm text-neutral-400">
               ระบบจองคิวร้านค้าผ่าน LINE OA
             </p>
           </div>
         </section>
         <section className="w-full">
-          <h2 className="text-xl font-semibold text-deeper-grey w-full">
+          <h2 className="text-deeper-grey w-full text-xl font-semibold">
             เข้าสู่ระบบ
           </h2>
           <p className="text-sm text-neutral-400">
@@ -83,7 +75,7 @@ const Login = () => {
               onChange={(e) =>
                 setLoginForm({ ...loginForm, phone: e.target.value })
               }
-              startContent={<PhoneIcon className="size-4 text-default-400" />}
+              startContent={<PhoneIcon className="text-default-400 size-4" />}
               errorMessage="โปรดกรอกเบอร์โทรศัพท์ที่ลงทะเบียน"
               name="phone"
               placeholder="เบอร์โทรศัพท์"
@@ -111,7 +103,7 @@ const Login = () => {
               }
               errorMessage="โปรดกรอกรหัสผ่าน"
               startContent={
-                <LockClosedIcon className="size-5 text-default-400" />
+                <LockClosedIcon className="text-default-400 size-5" />
               }
               endContent={
                 <button
@@ -121,9 +113,9 @@ const Login = () => {
                   onClick={toggleVisibility}
                 >
                   {isVisible ? (
-                    <EyeSlashFilledIcon className="size-5 text-default-400" />
+                    <EyeSlashFilledIcon className="text-default-400 size-5" />
                   ) : (
-                    <EyeFilledIcon className="size-5 text-default-400" />
+                    <EyeFilledIcon className="text-default-400 size-5" />
                   )}
                 </button>
               }
@@ -131,19 +123,12 @@ const Login = () => {
               placeholder="รหัสผ่าน"
               type={isVisible ? "text" : "password"}
             />
-            <div className="w-full flex justify-end">
-              <Button
-                type="button"
-                variant="light"
-                className="w-fit underline text-neutral-400"
-                size="sm"
-              >
-                หากลืมรหัสผ่าน?
-              </Button>
-            </div>
+            <p className="w-full text-xs text-red-500">
+              {error ? error?.response?.data?.message : null}
+            </p>
             <Button
               type="submit"
-              className="w-full bg-primary-700 text-white"
+              className="bg-primary-700 w-full text-white"
               size="lg"
             >
               เข้าสู่ระบบ
