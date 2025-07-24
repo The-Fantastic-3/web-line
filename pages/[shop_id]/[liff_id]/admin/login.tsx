@@ -7,6 +7,7 @@ import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/icon";
 import { PhoneIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import DefaultLayout from "@/layouts/default";
 import Loading from "@/components/Loading";
+import useAxios from "axios-hooks";
 
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,6 +17,25 @@ const Login = () => {
     password: "",
   });
 
+  const [{ data, error }, executeLogin] = useAxios(
+    {
+      url: `/`,
+      method: "GET",
+    },
+    { manual: true }
+  );
+
+  const login = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await executeLogin();
+      console.log("Login successful:", response.data);
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
+    setLoginForm({ phone: "", password: "" });
+  };
+
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   setTimeout(() => {
@@ -23,11 +43,11 @@ const Login = () => {
     setTimeout(() => setLoading(false), 500);
   }, 2000);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    loginForm.phone = loginForm.phone.replace(/\D/g, "");
-    setLoginForm({ phone: "", password: "" });
-  };
+  useEffect(() => {
+    if (error) {
+      console.error("Error fetching data:", error);
+    }
+  }, [error]);
 
   return (
     <DefaultLayout>
@@ -56,7 +76,7 @@ const Login = () => {
           <p className="text-sm text-neutral-400">
             กรอกเบอร์โทรศัพท์ที่ลงทะเบียนและรหัสผ่าน
           </p>
-          <Form className="w-full space-y-2 pt-5" onSubmit={onSubmit}>
+          <Form className="w-full space-y-2 pt-5" onSubmit={login}>
             <Input
               isRequired
               value={loginForm.phone}
