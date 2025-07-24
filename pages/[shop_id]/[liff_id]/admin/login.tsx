@@ -1,15 +1,19 @@
+"use server";
 import Image from "next/image";
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/icon";
 import { PhoneIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import DefaultLayout from "@/layouts/default";
 import Loading from "@/components/Loading";
 import useAxios from "axios-hooks";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const Login = () => {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loginForm, setLoginForm] = useState({
@@ -19,8 +23,8 @@ const Login = () => {
 
   const [{ data, error }, executeLogin] = useAxios(
     {
-      url: `/`,
-      method: "GET",
+      url: `/auth/login`,
+      method: "POST",
     },
     { manual: true },
   );
@@ -28,8 +32,15 @@ const Login = () => {
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await executeLogin();
-      console.log("Login successful:", response.data);
+      const response = await executeLogin({
+        data: {
+          phone: loginForm.phone.replace(/-/g, ""),
+          password: loginForm.password,
+        },
+      });
+      localStorage.setItem("access_token", response.data.access_token);
+      Cookies.set("access_token", response.data.access_token);
+      router.push(`/${router.query.shop_id}/${router.query.liff_id}/admin`);
     } catch (err) {
       console.error("Login failed:", err);
     }

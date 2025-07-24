@@ -16,18 +16,18 @@ export function middleware(request: NextRequest) {
   if (accessToken) {
     if (pathname === `/${shopId}/${liffId}/admin/login`) {
       return NextResponse.redirect(
-        new URL(`/${shopId}/${liffId}/admin`, request.url)
+        new URL(`/${shopId}/${liffId}/admin`, request.url),
       );
     } else if (!isAdminPath) {
       return NextResponse.redirect(
-        new URL(`/${shopId}/${liffId}/admin`, request.url)
+        new URL(`/${shopId}/${liffId}/admin`, request.url),
       );
     }
   }
 
   if (!accessToken && isAdminPath) {
     return NextResponse.redirect(
-      new URL(`/${shopId}/${liffId}/admin/login`, request.url)
+      new URL(`/${shopId}/${liffId}/admin/login`, request.url),
     );
   }
 
