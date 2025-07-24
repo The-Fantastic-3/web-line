@@ -41,10 +41,10 @@ const Login = () => {
       localStorage.setItem("access_token", response.data.access_token);
       Cookies.set("access_token", response.data.access_token);
       router.push(`/${router.query.shop_id}/${router.query.liff_id}/admin`);
+      setLoginForm({ phone: "", password: "" });
     } catch (err) {
       console.error("Login failed:", err);
     }
-    setLoginForm({ phone: "", password: "" });
   };
 
   const toggleVisibility = () => setIsVisible(!isVisible);

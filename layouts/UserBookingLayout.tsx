@@ -1,4 +1,4 @@
-import NavbarUser from "@/components/user/navbarUser";
+"use client";
 import { Head } from "./head";
 import * as motion from "motion/react-client";
 import { Button } from "@heroui/button";
@@ -41,7 +41,7 @@ const UserBookingLayout = ({
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <div className="relative flex flex-col h-screen">
+    <div className="relative flex h-screen flex-col">
       <Head />
       <motion.div
         initial={{ opacity: 0 }}
@@ -49,15 +49,15 @@ const UserBookingLayout = ({
         transition={{ duration: easeIn(0.8) }}
         key={"navbar"}
       >
-        <nav className="w-full py-8 flex gap-2 px-6">
+        <nav className="flex w-full gap-2 px-6 py-8">
           {stepCount &&
             Array.from({ length: stepCount }, (_, i) => (
               <div
                 key={i}
                 className={
                   currentStep !== i + 1
-                    ? "bg-primary-300 w-full h-2 rounded-full"
-                    : "bg-primary-600 w-full h-2 rounded-full"
+                    ? "bg-primary-300 h-2 w-full rounded-full"
+                    : "bg-primary-600 h-2 w-full rounded-full"
                 }
               ></div>
             ))}
@@ -68,7 +68,7 @@ const UserBookingLayout = ({
         animate={{ opacity: 1 }}
         transition={{ duration: easeIn(0.8) }}
         key={"main children"}
-        className="px-10 h-full"
+        className="h-full px-10"
       >
         {children}
       </motion.main>
@@ -77,17 +77,17 @@ const UserBookingLayout = ({
         animate={{ opacity: 1 }}
         transition={{ duration: easeIn(0.8) }}
         key={"footer"}
-        className="bg-linear-to-br from-[#9162FE] to-[#4B30E4] py-6 px-5 text-white flex justify-between items-center text-lg"
+        className="flex items-center justify-between bg-linear-to-br from-[#9162FE] to-[#4B30E4] px-5 py-6 text-lg text-white"
       >
         <Button
           variant="light"
-          className="text-white text-lg"
-          startContent={<ChevronLeftIcon className="text-white size-5" />}
+          className="text-lg text-white"
+          startContent={<ChevronLeftIcon className="size-5 text-white" />}
           onPress={() =>
             currentStep
               ? currentStep === 1
                 ? router.push(
-                    `/${router.query.shop_id}/${router.query.liff_id}/user`
+                    `/${router.query.shop_id}/${router.query.liff_id}/user`,
                   )
                 : onPressBack?.()
               : onPressNext?.()
@@ -99,7 +99,7 @@ const UserBookingLayout = ({
         {currentStep === 6 ? (
           <Button
             variant="solid"
-            className="bg-white text-primary-700 text-lg disabled:opacity-70"
+            className="text-primary-700 bg-white text-lg disabled:opacity-70"
             onPress={onOpen}
             isDisabled={isDisabled}
             endContent={
@@ -111,7 +111,7 @@ const UserBookingLayout = ({
         ) : (
           <Button
             variant="solid"
-            className="bg-white text-primary-700 text-lg disabled:opacity-70"
+            className="text-primary-700 bg-white text-lg disabled:opacity-70"
             onPress={() => onPressNext?.()}
             isDisabled={isDisabled}
             endContent={
