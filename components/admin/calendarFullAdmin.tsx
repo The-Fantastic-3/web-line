@@ -2,9 +2,11 @@ import { monthNamesTH } from "@/constant/monthNameTH";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/button";
 import moment, { Moment } from "moment";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const CalendarFullAdmin = () => {
+  const router = useRouter();
   const [selectedDate, setSelectedDate] = useState<Moment | null>(null);
   const [currentDate, setCurrentDate] = useState(moment());
 
@@ -43,41 +45,49 @@ const CalendarFullAdmin = () => {
 
   const activityMockup = [
     {
+      id: 1,
       date: "26/07/2025",
       title: "ตัดผม",
       type: "jobs",
     },
     {
+      id: 2,
       date: "26/07/2025",
       title: "ตัดผม",
       type: "jobs",
     },
     {
+      id: 3,
       date: "26/07/2025",
       title: "ตัดผม",
       type: "jobs",
     },
     {
+      id: 4,
       date: "28/07/2025",
       title: "ตัดผม",
       type: "jobs",
     },
     {
+      id: 5,
       date: "28/07/2025",
       title: "ตัดผม",
       type: "jobs",
     },
     {
+      id: 6,
       date: "28/07/2025",
       title: "ตัดผม",
       type: "jobs",
     },
     {
+      id: 7,
       date: "29/07/2025",
       title: "กำหนดส่งโปรเจค",
       type: "other",
     },
     {
+      id: 8,
       date: "30/07/2025",
       title: "กิจกรรมสร้างทีม",
       type: "other",
@@ -132,7 +142,12 @@ const CalendarFullAdmin = () => {
               <div
                 key={`day-${day}`}
                 className={`flex min-h-[80px] w-full flex-col gap-y-1 ${isPast ? "opacity-50" : ""} ${isSelected ? "bg-primary-100 rounded-lg" : ""} ${isToday ? "text-primary-700" : ""} `}
-                onClick={() => handleDateSelect(day)}
+                onClick={() => {
+                  handleDateSelect(day);
+                  router.push(
+                    `/${router.query.shop_id}/${router.query.liff_id}/admin/${thisDate.format("DD-MM-YYYY")}`,
+                  );
+                }}
               >
                 <p className="text-sm">{day}</p>
                 {activityMockup.map((act, index) => {
