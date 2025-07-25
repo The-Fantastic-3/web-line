@@ -12,10 +12,10 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         transition={{ duration: 0.5 }}
         key={"navbar"}
       >
-        <NavbarAdmin />
+        <NavbarAdmin notiCount={10} />
       </motion.div>
       <motion.main
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         key={"main children"}

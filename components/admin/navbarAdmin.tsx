@@ -13,7 +13,7 @@ import {
   Bars3Icon,
   BellIcon,
   CalendarDaysIcon,
-  ChartPieIcon,
+  ChartBarSquareIcon,
   Cog6ToothIcon,
   ArrowLeftStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
@@ -21,6 +21,8 @@ import { useDisclosure } from "@heroui/modal";
 import { Button } from "@heroui/button";
 import { useRouter } from "next/router";
 import * as motion from "motion/react-client";
+import { getName, getShopName } from "@/utils/token";
+import { useEffect, useState } from "react";
 
 const siteAdminConfig = [
   {
@@ -31,7 +33,7 @@ const siteAdminConfig = [
   {
     label: "แดชบอร์ด",
     href: "/dashboard",
-    icon: () => <ChartPieIcon className="my-auto size-5" />,
+    icon: () => <ChartBarSquareIcon className="my-auto size-5" />,
   },
   {
     label: "คำขอทั้งหมด",
@@ -54,9 +56,23 @@ const siteAdminConfig = [
   },
 ];
 
-const NavbarAdmin = () => {
+const NavbarAdmin = (props: { notiCount: number }) => {
+  const [username, setUsername] = useState<string | null>(null);
+  const [shopName, setShopName] = useState<string | null>(null);
   const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  useEffect(() => {
+    const nameFromToken = getName();
+    const shopNameFromToken = getShopName();
+    if (nameFromToken) {
+      setUsername(nameFromToken);
+    }
+    if (shopNameFromToken) {
+      setShopName(shopNameFromToken);
+    }
+  }, []);
+
   return (
     <>
       <header className="box-shadow flex w-full justify-between bg-white px-4 py-2">
@@ -68,16 +84,22 @@ const NavbarAdmin = () => {
             height={52}
             className="my-auto"
           />
-          <div className="flex flex-col justify-center">
-            <p className="font-medium">
-              สวัสดี, <span className="text-primary-700">Test</span>
-            </p>
-            <p className="text-sm text-neutral-400">111Tattoo.house</p>
+          <div className="flex w-full flex-col justify-center">
+            <div className="flex w-56 gap-1 truncate">
+              <p className="font-medium">สวัสดี, </p>
+              <span className="text-primary-700 truncate">{username}</span>
+            </div>
+            <p className="w-56 truncate text-sm text-neutral-400">{shopName}</p>
           </div>
         </div>
         <div className="flex">
           <Button variant="light" className="my-auto" isIconOnly>
-            <Badge color="danger" content={"9+"} shape="circle" size="sm">
+            <Badge
+              color="danger"
+              content={`${props.notiCount > 9 ? "9+" : props.notiCount}`}
+              shape="circle"
+              size="sm"
+            >
               <BellIcon className="text-primary-700 size-6" />
             </Badge>
           </Button>
@@ -117,13 +139,12 @@ const NavbarAdmin = () => {
                     {siteAdminConfig.map((item, index) => {
                       const isActive = router.pathname.startsWith(item.href);
                       return (
-                        <>
+                        <div key={`${item.label}-${index}`}>
                           {item.label !== "divider" ? (
                             <motion.div
                               initial={{ x: -50, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ duration: index * 0.1 + 0.08 }}
-                              key={`${item.label}-${index}`}
                               className={`relative flex justify-between rounded-xl py-4 pr-3 pl-6 ${isActive && "bg-primary-100 text-primary-700"} ${
                                 item.label === "ออกจากระบบ"
                                   ? "text-red-600"
@@ -144,14 +165,14 @@ const NavbarAdmin = () => {
                                       "drop-shadow-xs shadow-black text-white",
                                   }}
                                 >
-                                  10
+                                  {props.notiCount > 9 ? "9+" : props.notiCount}
                                 </Chip>
                               )}
                             </motion.div>
                           ) : (
                             <div className="h-[1px] w-full bg-neutral-200"></div>
                           )}
-                        </>
+                        </div>
                       );
                     })}
                   </div>
