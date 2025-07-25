@@ -12,7 +12,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   return (
-    <div className="relative flex flex-col h-screen">
+    <div className="relative flex h-screen flex-col">
       <Head />
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -27,7 +27,7 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         key={"main children"}
-        className="px-10 h-full bg-linear-to-t from-10% from-primary-100 via-40% via-white"
+        className="from-primary-100 h-full bg-linear-to-t from-10% via-white via-40% px-10"
       >
         {children}
       </motion.main>
@@ -36,19 +36,19 @@ const UserDefaultLayout = ({ children }: { children: React.ReactNode }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         key={"footer"}
-        className="bg-linear-to-br from-[#9162FE] to-[#4B30E4] py-6 px-5 text-white flex justify-between items-center text-lg"
+        className="flex items-center justify-between bg-linear-to-br from-[#9162FE] to-[#4B30E4] px-5 py-6 text-lg text-white"
       >
         <Button
           variant="light"
-          className="text-white text-lg"
-          startContent={<CalendarDaysIcon className="text-white size-5" />}
+          className="text-lg text-white"
+          startContent={<CalendarDaysIcon className="size-5 text-white" />}
         >
           ดูคิวที่จองไว้
         </Button>
 
         <Button
           variant="solid"
-          className="bg-white text-primary-700 text-lg"
+          className="text-primary-700 bg-white text-lg"
           as={"a"}
           href={`/${router.query.shop_id}/${router.query.liff_id}/user/booking`}
           endContent={

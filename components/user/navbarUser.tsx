@@ -9,7 +9,6 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import Image from "next/image";
-import NextLink from "next/link";
 import { useState } from "react";
 
 const NavbarUser = () => {
@@ -22,8 +21,8 @@ const NavbarUser = () => {
       className={isMenuOpen ? "" : "box-shadow"}
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <div className="flex justify-start items-center gap-1">
+        <NavbarBrand as="li" className="max-w-fit gap-3">
+          <div className="flex items-center justify-start gap-1">
             <Image
               src="/Queuely-logo.svg"
               alt="Queuely Logo"
@@ -31,7 +30,7 @@ const NavbarUser = () => {
               height={40}
               className="rounded-full"
             />
-            <p className="text-inherit font-semibold">Queuely</p>
+            <p className="font-semibold text-inherit">Queuely</p>
           </div>
         </NavbarBrand>
       </NavbarContent>
@@ -41,10 +40,10 @@ const NavbarUser = () => {
       </NavbarContent>
 
       <NavbarMenu className="bg-white">
-        <div className="mx-4 mt-2 flex flex-col gap-2 justify-center h-full items-center">
+        <div className="mx-4 mt-2 flex h-full flex-col items-center justify-center gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
-            <div className="space-y-8 w-3/4" key={`${item}-${index}`}>
-              <NavbarMenuItem className="w-full text-center pt-8">
+            <div className="w-3/4 space-y-8" key={`${item}-${index}`}>
+              <NavbarMenuItem className="w-full pt-8 text-center">
                 <Link
                   href="/"
                   size="lg"
@@ -53,7 +52,7 @@ const NavbarUser = () => {
                   {item.label}
                 </Link>
               </NavbarMenuItem>
-              <div className="w-full h-0.5 bg-primary-200"></div>
+              <div className="bg-primary-200 h-0.5 w-full"></div>
             </div>
           ))}
         </div>
