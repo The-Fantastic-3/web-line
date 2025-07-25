@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/button";
 import moment from "moment";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type SelectProps = {
   onSelectDate: (date: moment.Moment) => void;
@@ -10,20 +10,20 @@ type SelectProps = {
 
 const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
   const [selectedDate, setSelectedDate] = useState<moment.Moment | null>(
-    dateSelection || null
+    dateSelection || null,
   );
   const [currentDate, setCurrentDate] = useState(moment());
   const [month, setMonth] = useState(moment().format("MMMM"));
   const [year, setYear] = useState(moment().format("YYYY"));
   const [daysInMonth, setDaysInMonth] = useState(moment().daysInMonth());
   const [numberOfDayBefore, setNumberOfDayBefore] = useState(
-    new Date(Number(year), moment().month(), 1).getDay()
+    new Date(Number(year), moment().month(), 1).getDay(),
   );
   const [lastdate, setLastDate] = useState(
-    new Date(Number(year), moment().month() + 1, 0).getDate()
+    new Date(Number(year), moment().month() + 1, 0).getDate(),
   );
   const [monthLastDate, setMonthLastDate] = useState(
-    new Date(Number(year), moment().month(), 0).getDate()
+    new Date(Number(year), moment().month(), 0).getDate(),
   );
 
   const getMonthYear = () => {
@@ -31,7 +31,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
     setMonth(mapMonth(currentDate.month()));
     setYear(currentDate.year().toString());
     setDaysInMonth(
-      moment(`01/${date.getMonth() + 1}/${year}`, "DD/MM/YYYY").daysInMonth()
+      moment(`01/${date.getMonth() + 1}/${year}`, "DD/MM/YYYY").daysInMonth(),
     );
     setNumberOfDayBefore(new Date(Number(year), date.getMonth(), 1).getDay());
     setLastDate(new Date(Number(year), date.getMonth() + 1, 0).getDate());
@@ -45,7 +45,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
     setYear(next.year().toString());
     setDaysInMonth(next.daysInMonth());
     setNumberOfDayBefore(
-      new Date(Number(next.year()), next.month(), 1).getDay()
+      new Date(Number(next.year()), next.month(), 1).getDay(),
     );
     setLastDate(new Date(Number(next.year()), next.month() + 1, 0).getDate());
     setMonthLastDate(new Date(Number(next.year()), next.month(), 0).getDate());
@@ -58,13 +58,13 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
     setYear(previous.year().toString());
     setDaysInMonth(previous.daysInMonth());
     setNumberOfDayBefore(
-      new Date(Number(previous.year()), previous.month(), 1).getDay()
+      new Date(Number(previous.year()), previous.month(), 1).getDay(),
     );
     setLastDate(
-      new Date(Number(previous.year()), previous.month() + 1, 0).getDate()
+      new Date(Number(previous.year()), previous.month() + 1, 0).getDate(),
     );
     setMonthLastDate(
-      new Date(Number(previous.year()), previous.month(), 0).getDate()
+      new Date(Number(previous.year()), previous.month(), 0).getDate(),
     );
   };
 
@@ -102,7 +102,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
     <>
       <div className="w-full space-y-2 text-lg">
         {/* controller month */}
-        <div className="flex justify-between text-deeper-grey">
+        <div className="text-deeper-grey flex justify-between">
           <Button onPress={previousMonth} variant="light" isIconOnly>
             <ChevronLeftIcon className="h-5 w-5" />
           </Button>
@@ -124,7 +124,7 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
           })}
         </div>
         {/* calendar body */}
-        <div className="grid grid-cols-7 text-center pt-2">
+        <div className="grid grid-cols-7 pt-2 text-center">
           {/* before current month */}
           {Array.from({ length: numberOfDayBefore }, (_, i) => (
             <div key={i}></div>
@@ -133,23 +133,16 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
           {Array.from({ length: daysInMonth }, (_, i) => (
             <div
               key={i}
-              className={`relative w-full focus:bg-zinc-300 h-12 flex flex-col items-center justify-center
-                ${
-                  moment().isSameOrBefore(
-                    moment(currentDate).date(i + 1),
-                    "day"
-                  )
-                    ? ""
-                    : "text-neutral-400"
-                }
-                ${selectedDate?.date() === i + 1 && selectedDate?.month() === currentDate.month() ? "bg-primary-100 rounded-2xl" : ""}
-                ${moment().date() === i + 1 && moment().month() === currentDate.month() ? "text-primary-700" : ""}
-                `}
+              className={`relative flex h-12 w-full flex-col items-center justify-center focus:bg-zinc-300 ${
+                moment().isSameOrBefore(moment(currentDate).date(i + 1), "day")
+                  ? ""
+                  : "text-neutral-400"
+              } ${selectedDate?.date() === i + 1 && selectedDate?.month() === currentDate.month() ? "bg-primary-100 rounded-2xl" : ""} ${moment().date() === i + 1 && moment().month() === currentDate.month() ? "text-primary-700" : ""} `}
               onClick={() => {
                 if (
                   moment().isSameOrBefore(
                     moment(currentDate).date(i + 1),
-                    "day"
+                    "day",
                   )
                 ) {
                   setSelectedDate(moment(currentDate).date(i + 1));
@@ -160,9 +153,9 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
                 className={`${
                   moment().isSameOrBefore(
                     moment(currentDate).date(i + 1),
-                    "day"
+                    "day",
                   )
-                    ? "w-1.5 h-1.5 rounded-full bg-[#44D3FF]"
+                    ? "h-1.5 w-1.5 rounded-full bg-[#44D3FF]"
                     : ""
                 }`}
               ></div>
@@ -182,17 +175,17 @@ const CalendarUser = ({ onSelectDate, dateSelection }: SelectProps) => {
         </div>
 
         {/* note */}
-        <div className="flex justify-evenly w-full pt-5">
+        <div className="flex w-full justify-evenly pt-5">
           <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#FF4444] my-auto"></div>
+            <div className="my-auto h-2 w-2 rounded-full bg-[#FF4444]"></div>
             <p className="text-sm">คิวเต็ม</p>
           </div>
           <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#FFB135] my-auto"></div>
+            <div className="my-auto h-2 w-2 rounded-full bg-[#FFB135]"></div>
             <p className="text-sm">คิวใกล้เต็ม</p>
           </div>
           <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#44D3FF] my-auto"></div>
+            <div className="my-auto h-2 w-2 rounded-full bg-[#44D3FF]"></div>
             <p className="text-sm">คิวว่าง</p>
           </div>
         </div>
