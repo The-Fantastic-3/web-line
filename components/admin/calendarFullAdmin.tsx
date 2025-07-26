@@ -2,11 +2,12 @@ import { monthNamesTH } from "@/constant/monthNameTH";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@heroui/button";
 import moment, { Moment } from "moment";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const CalendarFullAdmin = () => {
-  const router = useRouter();
+const CalendarFullAdmin = (props: {
+  onOpen: () => void;
+  onSelected: (date: Moment | null) => void;
+}) => {
   const [selectedDate, setSelectedDate] = useState<Moment | null>(null);
   const [currentDate, setCurrentDate] = useState(moment());
 
@@ -36,12 +37,12 @@ const CalendarFullAdmin = () => {
     updateCalendar(prev);
   };
 
-  const handleDateSelect = (day: number) => {
-    const clickedDate = moment(currentDate).date(day);
-    if (clickedDate.isSameOrAfter(moment(), "day")) {
-      setSelectedDate(clickedDate);
-    }
-  };
+  // const handleDateSelect = (day: number) => {
+  //   const clickedDate = moment(currentDate).date(day);
+  //   if (clickedDate.isSameOrAfter(moment(), "day")) {
+  //     setSelectedDate(clickedDate);
+  //   }
+  // };
 
   const activityMockup = [
     {
@@ -92,6 +93,18 @@ const CalendarFullAdmin = () => {
       title: "กิจกรรมสร้างทีม",
       type: "other",
     },
+    {
+      id: 9,
+      date: "01/08/2025",
+      title: "กำหนดส่งโปรเจค",
+      type: "other",
+    },
+    {
+      id: 10,
+      date: "03/08/2025",
+      title: "กิจกรรมสร้างทีม",
+      type: "jobs",
+    },
   ];
 
   useEffect(() => {
@@ -141,12 +154,12 @@ const CalendarFullAdmin = () => {
             return (
               <div
                 key={`day-${day}`}
-                className={`flex min-h-[80px] w-full flex-col gap-y-1 ${isPast ? "opacity-50" : ""} ${isSelected ? "bg-primary-100 rounded-lg" : ""} ${isToday ? "text-primary-700" : ""} `}
+                className={`flex min-h-[80px] w-full flex-col gap-y-1 ${isPast ? "opacity-50" : ""} ${isToday ? "text-primary-700" : ""} `}
                 onClick={() => {
-                  handleDateSelect(day);
-                  router.push(
-                    `/${router.query.shop_id}/${router.query.liff_id}/admin/${thisDate.format("DD-MM-YYYY")}`,
-                  );
+                  if (!isPast) {
+                    props.onOpen();
+                    props.onSelected(thisDate);
+                  }
                 }}
               >
                 <p className="text-sm">{day}</p>
